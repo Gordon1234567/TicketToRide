@@ -40,6 +40,7 @@ public class Deck {
      * @return
      */
     public card draw(){
+        // returns the top two cards and removes them from the deck
         card stub = new card("Green");
         return stub;
     }

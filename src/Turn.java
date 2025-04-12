@@ -6,7 +6,8 @@ import java.util.Scanner;
 public class Turn {
 
     /**
-     * This will ask the player if they want to pick up cards or place trains
+     * This will ask the player if they want to pick up cards or place trains,
+     * They can also choose to check their points and how many trains they have left
      * @return
      */
     public int getMove(){
@@ -25,6 +26,20 @@ public class Turn {
      * This will put more cards in the players hand form the deck
      */
     public void getCards(){
+
+    }
+
+    /**
+     * Shows how many points they have
+     */
+    public void checkPoints(){
+
+    }
+
+    /**
+     * Check how many trains they have
+     */
+    public void checkTrains(){
 
     }
 }
