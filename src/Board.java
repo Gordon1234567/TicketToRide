@@ -12,7 +12,9 @@ public class Board {
     /**
      * lines will hold all the lines on the board
      */
+
     private ArrayList<line> lines;
+    // ^This may work as a hashSet^ instead of an arrayList
 
     /**
      * This will create a Board using a given ArrayList of lines
