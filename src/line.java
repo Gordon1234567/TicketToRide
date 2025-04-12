@@ -16,4 +16,29 @@ public class line {
         else if(Trains == 6){points = 15;}
         full = false;
     }
+
+    public int getTrains(){
+        return trains;
+    }
+
+    public int getPoints(){
+        return points;
+    }
+
+    public String getColor(){
+        return color;
+    }
+
+    public boolean getFull(){
+        return full;
+    }
+
+    public void setFull(){
+        if (full){
+            full = false;
+        }else{
+            full = true;
+        }
+    }
+
 }
