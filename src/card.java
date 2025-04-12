@@ -1,4 +1,5 @@
 public class card {
+
     private String color;
 
     public card(String Color){
