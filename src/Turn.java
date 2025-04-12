@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /**
  * This will run one turn, asking what the player wants to do either playing trains or picking up cards and trying to do that
  */

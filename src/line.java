@@ -1,16 +1,32 @@
+/**
+ * This will make a line witch will keep track of what color and how many trains are needed to build a line.
+ * It also keeps track of the lines point value, and if the line has been played yet.
+ */
 public class line {
 
-    // This class will contain all the info the game need for individual train lines
-
-    // The color of cards needed
+    /**
+     * The color of cards needed
+     */
     private String color;
-    // the number of cards needed
+    /**
+     * the number of cards needed
+     */
     private int trains;
-    // the number of points the line is worth
+    /**
+     * the number of points the line is worth
+     */
     private int points;
-    // whether the line has been filled or not
+    /**
+     * whether the line has been filled or not
+     */
     private boolean full;
 
+    /**
+     * This will make a line with a color and number of trains needed to build it.
+     * It also calculates the number of points the line is worth based on the length.
+     * @param Color is the color card needed to build the line
+     * @param Trains is the number of trains needed to build the line
+     */
     public line(String Color, int Trains){
         color = Color;
         trains = Trains;
@@ -23,22 +39,41 @@ public class line {
         full = false;
     }
 
+    /**
+     * This gives the number of trains needed to build the line
+     * @return the number of trains needed
+     */
     public int getTrains(){
         return trains;
     }
 
+    /**
+     * This gives the number of points a line is worth
+     * @return the number of points
+     */
     public int getPoints(){
         return points;
     }
 
+    /**
+     * Returns the color needed to build the line
+     * @return the color
+     */
     public String getColor(){
         return color;
     }
 
+    /**
+     * returns if a line is full
+     * @return if it's full
+     */
     public boolean getFull(){
         return full;
     }
 
+    /**
+     * This sets if the line is full
+     */
     public void setFull(){
         if (full){
             full = false;
