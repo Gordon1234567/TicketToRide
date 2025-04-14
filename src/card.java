@@ -1,4 +1,6 @@
 /**
+ * I think this class is done
+ *
  * This class will make cards, each can be a different color
  */
 public class card {

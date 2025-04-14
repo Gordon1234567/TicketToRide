@@ -82,4 +82,13 @@ public class line {
         }
     }
 
+    public String toString() {
+        char firstChar = color.charAt(0);
+        if(full) {
+            return ("[][]");
+            // I want to make this show the player occupying the space
+        }else{
+            return ("" + trains + firstChar);
+        }
+    }
 }

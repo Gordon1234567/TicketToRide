@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * This class will print the board to the user,
@@ -13,15 +14,24 @@ public class Board {
      * lines will hold all the lines on the board
      */
 
-    private ArrayList<line> lines;
+    private HashSet<line> lines = new HashSet<>(5);
     // ^This may work as a hashSet^ instead of an arrayList
 
     /**
      * This will create a Board using a given ArrayList of lines
-     * @param lines is the list of lines
+     * @param lineSet is the set of lines
      */
-    private Board(ArrayList<line> lines){
-
+    private Board(HashSet<line> lineSet){
+        lines = lineSet;
+        // 25 width in white spaces
+        this.board = """
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                {                         }\s
+                {                         }\s
+                {                         }
+                {                         }
+                {                         }
+                {                         }""";
     }
 
     /**
@@ -30,7 +40,7 @@ public class Board {
      * @return if the line is full
      */
     public boolean isLineFull(line l){
-        return true;
+        return l.getFull();
     }
 
     /**
