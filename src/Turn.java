@@ -18,28 +18,28 @@ public class Turn {
      * This will be given the line that the player wants to play, it will try to play trains there
      * @param line is the line the player wants to play on
      */
-    public void playTrain(String line){
+    public void playTrain(String line, Hand x){
 
     }
 
     /**
      * This will put more cards in the players hand form the deck
      */
-    public void getCards(){
+    public void getCards(Hand x){
 
     }
 
     /**
      * Shows how many points they have
      */
-    public void checkPoints(){
+    public void checkPoints(Hand x){
 
     }
 
     /**
      * Check how many trains they have
      */
-    public void checkTrains(){
+    public void checkTrains(Hand x){
 
     }
 }

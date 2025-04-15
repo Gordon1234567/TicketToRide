@@ -32,12 +32,10 @@ public class Hand {
 
     /**
      * This adds 2 cards into the players hand
-     * @param one is the first card
-     * @param two is the second card
      */
-    public void pickupCards(card one,card two ){
-        hand.add(one);
-        hand.add(two);
+    public void pickupCards(Deck x){
+        hand.add(x.draw());
+        hand.add(x.draw());
     }
 
     /**
@@ -78,5 +76,14 @@ public class Hand {
         return hand;
     }
 
+    public String toString() {
 
+        ArrayList<String> cards = new ArrayList<>();
+
+        for (int i = 0; i < hand.size(); i++) {
+            cards.add(hand.get(i).getColor());
+        }
+
+        return cards.toString();
+    }
 }

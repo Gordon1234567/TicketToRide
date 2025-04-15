@@ -7,6 +7,32 @@ public class game {
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
+
+        System.out.println("How many people are playing?");
+        int numPlayers = scan.nextInt();
+        Hand[] player = new Hand[numPlayers];
+
+        Deck deck = new Deck();
+        deck.shuffle();
+
+        for (int i = 0; i < numPlayers; i++) {
+            player[i] = new Hand();
+            player[i].pickupCards(deck);
+        }
+
+
+        int playerNum = 1;
+        while(true){
+            System.out.println("Player " + playerNum + " would you like to:" +
+                    "\n1 - Pick up cards" +
+                    "\n2 - Place trains" +
+                    "\n3 - Check your points" +
+                    "\n4 - Check your trains");
+
+            int decision = scan.nextInt();
+            break;
+        }
+
         /**
          * Will intake the number of players and make that many Hand objects in an array.
          * Then will run Turn in a loop for each player at a time,

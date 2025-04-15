@@ -14,24 +14,28 @@ public class Board {
      * lines will hold all the lines on the board
      */
 
-    private HashSet<line> lines = new HashSet<>(5);
+    private ArrayList<line> lines = new ArrayList<>(7);
     // ^This may work as a hashSet^ instead of an arrayList
 
     /**
      * This will create a Board using a given ArrayList of lines
      * @param lineSet is the set of lines
      */
-    private Board(HashSet<line> lineSet){
+    private Board(ArrayList<line> lineSet){
         lines = lineSet;
-        // 25 width in white spaces
+
         this.board = """
                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                {                         }\s
-                {                         }\s
-                {                         }
-                {                         }
-                {                         }
-                {                         }""";
+                {  1------2          6    }
+                {  |      |          |    }
+                {  |      |          |    }
+                {  |      |          |    }
+                {  3------4----------5    }
+                {         |               }
+                {         |               }
+                {         |               }
+                {         6               }
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~""";
     }
 
     /**

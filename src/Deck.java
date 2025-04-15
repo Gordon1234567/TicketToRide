@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Stack;
 
 /**
@@ -5,6 +6,7 @@ import java.util.Stack;
  */
 public class Deck {
 
+    Random rand = new Random();
     /**
      * the deck. There will be an equal number of each color in the deck
      */
@@ -19,13 +21,30 @@ public class Deck {
      * unshuffled deck constructor
      */
     public Deck(){
+        for (int i = 0; i < 30; i++) {
+            deck.add(new card(colors[0]));
+        }
 
+        for (int i = 0; i < 30; i++) {
+            deck.add(new card(colors[1]));
+        }
+
+        for (int i = 0; i < 30; i++) {
+            deck.add(new card(colors[2]));
+        }
     }
 
     /**
      * this will randomize the deck
      */
     public void shuffle(){
+
+        for (int i = 0; i <= 51; i++) {
+                int randInta = rand.nextInt(0, 90);
+                int randIntb = rand.nextInt(0, 90);
+                swap(randInta, randIntb);
+            }
+
         // planning to use my shuffle code from comp 1 with a few modifications
         // though I don't know how that will work with a Stack
 
@@ -36,13 +55,14 @@ public class Deck {
 
 
     /**
-     * returns the top two cards and removes them from the deck
+     * returns the top card and removes it from the deck
      * @return
      */
     public card draw(){
-        // returns the top two cards and removes them from the deck
-        card stub = new card("Green");
-        return stub;
+        // returns the top card and removes it from the deck
+        card c = deck.getFirst();
+        deck.removeFirst();
+        return c;
     }
 
     /**
@@ -52,6 +72,15 @@ public class Deck {
     public int getRemaining(){
         // returns the number of cards in the deck in case it is low/empty
         return 1;
+    }
+
+    //swaps 2 cards in this.cards
+    public void swap(int index1, int index2) {
+        card temp = deck.get(index1);
+        // this.cards[index1] = this.card[index2];
+        deck.set(index1,deck.get(index2));
+        // this.cards[index2] = temp
+        deck.set(index2, temp);
     }
 
 }

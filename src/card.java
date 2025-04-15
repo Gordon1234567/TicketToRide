@@ -24,4 +24,5 @@ public class card {
     public String getColor(){
         return color;
     }
+
 }
