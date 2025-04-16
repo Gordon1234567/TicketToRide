@@ -14,27 +14,26 @@ public class Board {
      * lines will hold all the lines on the board
      */
 
-    private ArrayList<line> lines = new ArrayList<>(7);
+    private HashSet<line> lines = new HashSet<>(7);
     // ^This may work as a hashSet^ instead of an arrayList
 
     /**
      * This will create a Board using a given ArrayList of lines
-     * @param lineSet is the set of lines
      */
-    private Board(ArrayList<line> lineSet){
-        lines = lineSet;
+    private Board(){
+        lines.add(new line("red",2));
 
         this.board = """
                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                {  1------2          6    }
-                {  |      |          |    }
-                {  |      |          |    }
-                {  |      |          |    }
-                {  3------4----------5    }
-                {         |               }
-                {         |               }
-                {         |               }
-                {         6               }
+                {  1------2          6    } 1-Toledo
+                {  |      |          |    } 2-Cleveland
+                {  |      |          |    } 3-Dayton
+                {  |      |          |    } 4-Columbus
+                {  3------4----------5    } 5-Pittsburgh
+                {  |                      } 6-Erie
+                {  |                      } 7-Cincinnati
+                {  |                      }
+                {  7                      }
                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~""";
     }
 
@@ -53,4 +52,5 @@ public class Board {
     public void printBoard(){
 
     }
+
 }

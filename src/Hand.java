@@ -33,9 +33,9 @@ public class Hand {
     /**
      * This adds 2 cards into the players hand
      */
-    public void pickupCards(Deck x){
-        hand.add(x.draw());
-        hand.add(x.draw());
+    public void pickupCards(Deck theDeck){
+        hand.add(theDeck.draw());
+        hand.add(theDeck.draw());
     }
 
     /**
@@ -65,6 +65,20 @@ public class Hand {
      * @return the number of trains
      */
     public int getTrains(){
+        return trains;
+    }
+
+    /**
+     * Shows how many points they have
+     */
+    public int checkPoints(){
+        return points;
+    }
+
+    /**
+     * Check how many trains they have
+     */
+    public int checkTrains(){
         return trains;
     }
 
