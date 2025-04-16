@@ -20,6 +20,8 @@ public class gameLoop {
         Deck deck = new Deck();
         deck.shuffle();
 
+        Board board = new Board();
+
         for (int i = 0; i < numPlayers; i++) {
             player[i] = new Hand();
             player[i].pickupCards(deck);
@@ -27,6 +29,8 @@ public class gameLoop {
 
         int playerNum = 1;
         while(true){
+            board.printBoard();
+
             System.out.println("Player " + playerNum + " would you like to:" +
                     "\n1 - Pick up cards" +
                     "\n2 - Place trains" +
@@ -38,7 +42,6 @@ public class gameLoop {
                 player[playerNum].pickupCards(deck);
             }else{
                 System.out.println("Where would you like to place Trains?");
-                playTrain();
             }
             break;
         }

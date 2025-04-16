@@ -20,8 +20,20 @@ public class Board {
     /**
      * This will create a Board using a given ArrayList of lines
      */
-    private Board(){
-        lines.add(new line("red",2));
+    public Board(){
+        // a large portion of the work will be writing code so that
+        // the user can input a variety of answers to
+        // "Where would you like to place trains?" and still get it to apply.
+        line oneTwo = new line("red",2);
+        line oneThree = new line("blue",3);
+        line twoFour = new line("red",);
+        line threeFour = new line("red",2);
+        line fourfive = new line("red",2);
+        line threeSeven = new line("red",2);
+        line fiveSix = new line("red",2);
+        line fiveEight = new line("red",2);
+        line sevenEight = new line("red",2);
+        lines.add(oneTwo);
 
         this.board = """
                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -30,10 +42,10 @@ public class Board {
                 {  |      |          |    } 3-Dayton
                 {  |      |          |    } 4-Columbus
                 {  3------4----------5    } 5-Pittsburgh
-                {  |                      } 6-Erie
-                {  |                      } 7-Cincinnati
-                {  |                      }
-                {  7                      }
+                {  |                 |    } 6-Erie
+                {  |                 |    } 7-Cincinnati
+                {  |                 |    } 8-Wheeling
+                {  7-----------------8    }
                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~""";
     }
 
@@ -50,7 +62,7 @@ public class Board {
      * This will print the Board to the console
      */
     public void printBoard(){
-
+        System.out.println(board);
     }
 
 }
