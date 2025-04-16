@@ -31,17 +31,35 @@ public class gameLoop {
         while(true){
             board.printBoard();
 
+            System.out.println("Your hand:");
+            System.out.println(player[playerNum].toString());
+            System.out.println();
+
             System.out.println("Player " + playerNum + " would you like to:" +
                     "\n1 - Pick up cards" +
                     "\n2 - Place trains" +
                     "\n3 - Check your points" +
                     "\n4 - Check your trains");
-            int choice = scan.nextInt();
 
-            if(choice == 1){
-                player[playerNum].pickupCards(deck);
-            }else{
-                System.out.println("Where would you like to place Trains?");
+            while(true) {
+
+                int choice = scan.nextInt();
+
+                if (choice == 1) {
+                    player[playerNum].pickupCards(deck);
+                    break;
+                } else if (choice == 2) {
+                    System.out.println("Where would you like to place Trains?");
+                    break;
+                } else if (choice == 3) {
+                    System.out.println(player[playerNum].checkPoints() + " points");
+                    System.out.println("What else?");
+                } else if (choice == 4) {
+                    System.out.println(player[playerNum].checkTrains() + " trains remaining");
+                    System.out.println("What else?");
+                } else {
+                    System.out.println("Not an option");
+                }
             }
             break;
         }
@@ -57,7 +75,16 @@ public class gameLoop {
      * This will be given the line that the player wants to play, it will try to play trains there
      * @param line is the line the player wants to play on
      */
-    public void playTrain(String line, Hand x){
+    public void playTrain(int line, Hand x,Board board){
+        try {
+            if (board.isLineFull(line)) {
+                System.out.println("Line already taken");
+            } else {
 
+            }
+        } catch (Exception e) {
+            // This will obviously be changed when we add multiple ways to recognize user input
+            System.out.println("Please input in the right way");;
+        }
     }
 }
