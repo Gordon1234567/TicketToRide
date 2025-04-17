@@ -100,4 +100,9 @@ public class Hand {
 
         return cards.toString();
     }
+
+    // this will tell if a hand contains the specified number of a specific color
+    public boolean contains(String color, int num){
+        return false;
+    }
 }

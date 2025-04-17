@@ -50,6 +50,8 @@ public class gameLoop {
                     break;
                 } else if (choice == 2) {
                     System.out.println("Where would you like to place Trains?");
+                    int location = scan.nextInt();
+                    playTrain(location, player[playerNum], board);
                     break;
                 } else if (choice == 3) {
                     System.out.println(player[playerNum].checkPoints() + " points");
