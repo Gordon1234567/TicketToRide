@@ -1,4 +1,7 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.Predicate;
 
 
 /**
@@ -40,16 +43,19 @@ public class Hand {
 
     /**
      * will remove a specified number of cards of the specified color
-     * will likely throw an exception if those cards aren't in hand
+     * will add points to the player
      * will then subtract number of cards needed from trains
      */
-    public void placeTrains(){
-    }
+    public void placeTrains(line x) {
 
-    /**
-     * this adds points to the player
-     */
-    public void addPoints(){
+        int cardsRemoved = x.getTrains();
+
+        // Removes the first instance of a card of a specific color the specified number of times
+        for (int i = 0; i < cardsRemoved; i++) {
+            hand.remove(x.getColor());
+        }
+        points = points + x.getPoints();
+        trains = trains - x.getTrains();
     }
 
     /**
@@ -104,5 +110,9 @@ public class Hand {
     // this will tell if a hand contains the specified number of a specific color
     public boolean contains(String color, int num){
         return false;
+    }
+
+    public boolean hasNumCards(card color, int frequency) {
+        return Collections.frequency(hand, color) == frequency;
     }
 }

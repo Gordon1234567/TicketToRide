@@ -7,7 +7,7 @@ public class line {
     /**
      * The color of cards needed
      */
-    private String color;
+    private card color;
     /**
      * the number of cards needed
      */
@@ -27,7 +27,7 @@ public class line {
      * @param Color is the color card needed to build the line
      * @param Trains is the number of trains needed to build the line
      */
-    public line(String Color, int Trains){
+    public line(card Color, int Trains){
         color = Color;
         trains = Trains;
         if(Trains == 1){points = 1;}
@@ -59,7 +59,7 @@ public class line {
      * Returns the color needed to build the line
      * @return the color
      */
-    public String getColor(){
+    public card getColor(){
         return color;
     }
 
@@ -83,7 +83,7 @@ public class line {
     }
 
     public String toString() {
-        char firstChar = color.charAt(0);
+        char firstChar = color.getColor().charAt(0);
         if(full) {
             return ("[]");
             // I want to make this show the player occupying the space

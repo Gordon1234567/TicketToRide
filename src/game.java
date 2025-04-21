@@ -5,6 +5,8 @@ public class game {
      * This will just run the game
      */
     public static void main(String[] args) {
+//        Board b = new Board();
+//        System.out.println(b.getLine(34).getFull());
         gameLoop game = new gameLoop();
         game.loop();
     }
