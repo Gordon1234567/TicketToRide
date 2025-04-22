@@ -32,6 +32,21 @@ public class gameLoop {
         while(true){
             board.printBoard();
 
+            if(player[playerNum].getTrains() == 0){
+                System.out.println("The game has ended because " + (playerNum + 1) + " has no more trains");
+                int winningPlayer = 0;
+                int highestNumber = 0;
+                for (int i = 0; i < player.length; i++){
+                    if(player[i].getPoints() > highestNumber){
+                        highestNumber = player[i].getPoints();
+                        winningPlayer = i + 1;
+                    }
+
+                }
+                System.out.println("player " + winningPlayer + " WINS!!!!");
+                break;
+            }
+
             System.out.println("Your hand:");
             System.out.println(player[playerNum].toString());
             System.out.println();
