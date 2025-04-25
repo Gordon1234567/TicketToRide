@@ -107,7 +107,7 @@ public class Hand {
         return cards.toString();
     }
 
-    // this will tell if a hand contains the specified number of a specific color
+    // this will tell if a hand contains the specified number of a specific color of card
     // But I can't get it working
     public boolean hasNumCards(card color, int frequency) {
         return Collections.frequency(hand, color) == frequency;

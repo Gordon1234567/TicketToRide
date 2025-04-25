@@ -11,7 +11,7 @@ public class Deck {
      * the deck. There will be an equal number of each color in the deck
      */
     private Stack<card> deck = new Stack<>();
-
+    // ^Think I'm gonna turn this into a queue and have the used cards get shuffled and place at the bottom of the deck
     /**
      * this is a list of the colors in the deck
      */
@@ -39,9 +39,9 @@ public class Deck {
      */
     public void shuffle(){
 
-        for (int i = 0; i <= 51; i++) {
-                int randInta = rand.nextInt(0, 90);
-                int randIntb = rand.nextInt(0, 90);
+        for (int i = 0; i <= deck.size(); i++) {
+                int randInta = rand.nextInt(0, deck.size());
+                int randIntb = rand.nextInt(0, deck.size());
                 swap(randInta, randIntb);
             }
 
