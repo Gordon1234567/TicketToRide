@@ -31,15 +31,15 @@ public class Board {
         // a large portion of the work will be writing code so that
         // the user can input a variety of answers to
         // "Where would you like to place trains?" and still get it to apply.
-        line A = new line(assignedCard[0],2);
-        line B = new line(assignedCard[1],4);
-        line C = new line(assignedCard[2],3);
-        line D = new line(assignedCard[0],1);
-        line E = new line(assignedCard[1],5);
-        line F = new line(assignedCard[2],2);
-        line G = new line(assignedCard[2],3);
-        line H = new line(assignedCard[2],1);
-        line I = new line(assignedCard[0],6);
+        line A = new line(assignedCard[0].getColor(),2);
+        line B = new line(assignedCard[1].getColor(),4);
+        line C = new line(assignedCard[2].getColor(),3);
+        line D = new line(assignedCard[0].getColor(),1);
+        line E = new line(assignedCard[1].getColor(),5);
+        line F = new line(assignedCard[2].getColor(),2);
+        line G = new line(assignedCard[2].getColor(),3);
+        line H = new line(assignedCard[2].getColor(),1);
+        line I = new line(assignedCard[0].getColor(),6);
         lines.put(12,A);
         lines.put(13,B);
         lines.put(24,C);
@@ -84,5 +84,6 @@ public class Board {
     public void playTrains(Hand x, int l){
         x.placeTrains(lines.get(l));
         lines.get(l).setFull();
+        lines.get(l).setOwner(x.getPlayerNumber());
     }
 }

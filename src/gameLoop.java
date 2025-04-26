@@ -25,6 +25,7 @@ public class gameLoop {
         for (int i = 0; i < numPlayers; i++) {
             player[i] = new Hand();
             player[i].pickupCards(deck);
+            player[i].setPlayerNumber(i+1);
         }
 
         int playerNum = 0;

@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -14,7 +15,9 @@ public class Hand {
     /**
      * the cards someone has in their hand
      */
-    private ArrayList<card> hand = new ArrayList<>();
+   // private ArrayList<card> hand = new ArrayList<>();
+   // Trying to make hand a hashMap
+    private HashMap<String,Integer> hand = new HashMap<>();
 
     /**
      * the points accumulated
@@ -27,18 +30,35 @@ public class Hand {
     private int trains = 15;
 
     /**
+     * will hold what player number they are
+     */
+    private int playerNumber;
+
+    /**
      * creates an empty hand
      */
     public Hand(){
 
     }
 
+    public int getPlayerNumber() {
+        return playerNumber;
+    }
+
+    public void setPlayerNumber(int playerNumber) {
+        this.playerNumber = playerNumber;
+    }
+
     /**
      * This adds 2 cards into the players hand
      */
     public void pickupCards(Deck theDeck){
-        hand.add(theDeck.draw());
-        hand.add(theDeck.draw());
+        card one = theDeck.draw();
+        int currentCount = hand.getOrDefault(one.getColor(),0);
+        hand.put(one.getColor(),currentCount + 1);
+        card two = theDeck.draw();
+        int currentCount2 = hand.getOrDefault(two.getColor(),0);
+        hand.put(two.getColor(),currentCount2 + 1);
     }
 
     /**
@@ -92,24 +112,24 @@ public class Hand {
      * this gives the players hand
      * @return a ArrayList of cards for the players hand
      */
-    public ArrayList<card> getHand() {
+    public HashMap<String,Integer> getHand() {
         return hand;
     }
 
     public String toString() {
-
-        ArrayList<String> cards = new ArrayList<>();
-
-        for (int i = 0; i < hand.size(); i++) {
-            cards.add(hand.get(i).getColor());
+        StringBuilder print = new StringBuilder();
+        for ( String key : hand.keySet() ) {
+            print.append("You have " + hand.get(key) + " " + key + ", ");
         }
+        print.deleteCharAt(print.length()-1);
+        print.deleteCharAt(print.length()-1);
+        return print.toString();
 
-        return cards.toString();
     }
 
     // this will tell if a hand contains the specified number of a specific color
     // But I can't get it working
-    public boolean hasNumCards(card color, int frequency) {
-        return Collections.frequency(hand, color) == frequency;
+    public boolean hasNumCards(String color, int frequency) {
+        return hand.get(color) >= frequency;
     }
 }

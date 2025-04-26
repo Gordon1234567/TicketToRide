@@ -7,7 +7,7 @@ public class line {
     /**
      * The color of cards needed
      */
-    private card color;
+    private String color;
     /**
      * the number of cards needed
      */
@@ -20,6 +20,10 @@ public class line {
      * whether the line has been filled or not
      */
     private boolean full;
+    /**
+     * tells which player owns the train
+     */
+    private int owner;
 
     /**
      * This will make a line with a color and number of trains needed to build it.
@@ -27,7 +31,7 @@ public class line {
      * @param Color is the color card needed to build the line
      * @param Trains is the number of trains needed to build the line
      */
-    public line(card Color, int Trains){
+    public line(String Color, int Trains){
         color = Color;
         trains = Trains;
         if(Trains == 1){points = 1;}
@@ -59,7 +63,7 @@ public class line {
      * Returns the color needed to build the line
      * @return the color
      */
-    public card getColor(){
+    public String getColor(){
         return color;
     }
 
@@ -75,17 +79,21 @@ public class line {
      * This sets if the line is full
      */
     public void setFull(){
-        if (full){
-            full = false;
-        }else{
-            full = true;
-        }
+        full = true;
+    }
+
+    public int getOwner() {
+        return owner;
+    }
+
+    public void setOwner(int owner) {
+        this.owner = owner;
     }
 
     public String toString() {
-        char firstChar = color.getColor().charAt(0);
+        char firstChar = color.charAt(0);
         if(full) {
-            return ("[]");
+            return ("player" + owner + "s");
             // I want to make this show the player occupying the space
         }else{
             return ("" + trains + firstChar);
