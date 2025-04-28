@@ -130,6 +130,6 @@ public class Hand {
     // this will tell if a hand contains the specified number of a specific color of card
     // But I can't get it working
     public boolean hasNumCards(String color, int frequency) {
-        return hand.get(color) >= frequency;
+        return hand.getOrDefault(color, 0) >= frequency;
     }
 }
