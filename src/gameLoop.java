@@ -120,7 +120,7 @@ public class gameLoop {
 
                 // Then checks if the player has enough cards of specified color in their hand
             }else if (x.hasNumCards(board.getLine(line).getColor(), board.getLine(line).getTrains())) {
-                // This is not working, always says you don't have the necessary trains
+                // This is not working, always says you don't have the necessary cards
 
                 board.playTrains(x, line);
                 System.out.println("That's "+ board.getLine(line).getPoints() + " points");
