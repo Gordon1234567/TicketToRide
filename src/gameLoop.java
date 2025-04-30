@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class gameLoop {
@@ -34,6 +35,7 @@ public class gameLoop {
         int playerNum = 0;
 
         while(true){
+            System.out.println("_________________________________________________");
             board.printBoard();
 
             if(player[playerNum].getTrains() == 0){
@@ -70,11 +72,26 @@ public class gameLoop {
                     System.out.println("Your new hand " + player[playerNum].toString());
                     break;
 
-                } else if (choice == 2) {
+                }else if (choice == 2) {
                     System.out.println("Where would you like your train to start?");
-                    int location1 = scan.nextInt();
+                    String input1 = scan.next();
+
+                    // Allows for String inputs
+                    int location1 = 0;
+                    try{
+                        location1 = Integer.parseInt(input1);
+                    }catch(NumberFormatException e){
+                        location1 = inputReceiver(input1);
+                    }
+
                     System.out.println("Where would you like your train to end?");
-                    int location2 = scan.nextInt();
+                    String input2 = scan.next();
+                    int location2 = 0;
+                    try{
+                        location2 = Integer.parseInt(input2);
+                    }catch(NumberFormatException e){
+                        location2 = inputReceiver(input2);
+                    }
                     line a = new line();
                     for (int i = 0; i < board.getLength(); i++){
                         if (board.getLine(i).getLocations().contains(location2) && board.getLine(i).getLocations().contains(location1)){
@@ -152,6 +169,62 @@ public class gameLoop {
                 // This will obviously be changed when we add multiple ways to recognize user input
                 System.out.println("Please input in the right way");
                 return false;
+        }
+    }
+
+    /**
+     * This will allow the user to input city names or String
+     * versions of numbers and have it still work
+     * @param input
+     * @return
+     */
+    public int inputReceiver(String input){
+        HashMap<String, Integer> m = new HashMap<>();
+
+        m.put("one",1);
+        m.put("One",1);
+        m.put("Toledo",1);
+        m.put("toledo",1);
+
+        m.put("Two",2);
+        m.put("two",2);
+        m.put("Cleveland",2);
+        m.put("cleveland",2);
+
+        m.put("Three",3);
+        m.put("three",3);
+        m.put("Dayton",3);
+        m.put("dayton",3);
+
+        m.put("Four",4);
+        m.put("four",4);
+        m.put("Columbus",4);
+        m.put("columbus",4);
+
+        m.put("Five",5);
+        m.put("five",5);
+        m.put("Pittsburgh",5);
+        m.put("pittsburgh",5);
+
+        m.put("Six",6);
+        m.put("six",6);
+        m.put("Erie",6);
+        m.put("erie",6);
+
+        m.put("Seven",7);
+        m.put("seven",7);
+        m.put("Cincinnati",7);
+        m.put("cincinnati",7);
+
+        m.put("Eight",8);
+        m.put("eight",8);
+        m.put("Wheeling",8);
+        m.put("wheeling",8);
+
+        try{
+            return m.get(input);
+        }catch(Exception e) {
+            return 0;
         }
     }
 }
