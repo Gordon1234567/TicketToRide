@@ -21,6 +21,8 @@ public class Board {
     line H;
     line I;
 
+    private ArrayList<card> cardRow = new ArrayList<>();
+
     /**
      * A record of the colored cards being used
      */
@@ -98,5 +100,27 @@ public class Board {
         x.placeTrains(railroad);
         railroad.setFull();
         railroad.setOwner(x.getPlayerNumber());
+    }
+
+    public card getCardFromCardRow(int i){
+        return cardRow.get(i);
+    }
+
+    public void addCardToCardRow(card a){
+        cardRow.add(a);
+    }
+
+    public void removeCardFromCardRow(card a){
+        cardRow.remove(a);
+    }
+
+    public String printCardRow(){
+        StringBuilder print = new StringBuilder();
+        for (int i = 0; i < cardRow.size(); i++){
+            print.append(cardRow.get(i).getColor()+", ");
+        }
+        print.deleteCharAt(print.length()-1);
+        print.deleteCharAt(print.length()-1);
+        return print.toString();
     }
 }

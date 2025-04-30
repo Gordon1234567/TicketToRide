@@ -112,6 +112,11 @@ public class Hand {
         }
     }
 
+    public void pickupCard(card a){
+        int currentCount = hand.getOrDefault(a.getColor(), 0);
+        hand.put(a.getColor(), currentCount + 1);
+    }
+
     /**
      * will remove a specified number of cards of the specified color
      * will add points to the player

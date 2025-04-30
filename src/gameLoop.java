@@ -25,6 +25,12 @@ public class gameLoop {
 
         Board board = new Board();
 
+        board.addCardToCardRow((card)deck.draw());
+        board.addCardToCardRow((card)deck.draw());
+        board.addCardToCardRow((card)deck.draw());
+        board.addCardToCardRow((card)deck.draw());
+        board.addCardToCardRow((card)deck.draw());
+
         for (int i = 0; i < numPlayers; i++) {
             player[i] = new Hand();
             player[i].pickupCards(deck);
@@ -54,12 +60,14 @@ public class gameLoop {
             System.out.println("Your hand:");
             System.out.println(player[playerNum].toString());
             System.out.println();
-
+            System.out.println("The card row has");
+            System.out.println(board.printCardRow());
             System.out.println("Player " + (playerNum + 1) + " would you like to:" +
-                    "\n1 - Pick up cards" +
-                    "\n2 - Place trains" +
-                    "\n3 - Check your points, trains, and routs " +
-                    "\n4 - Take a rout card");
+                    "\n1 - Pick up 2 random cards" +
+                    "\n2 - Pick up 1 card form the card row" +
+                    "\n3 - Place trains" +
+                    "\n4 - Check your points, trains, and routs " +
+                    "\n5 - Take a rout card");
 
             while(true) {
 
@@ -70,7 +78,25 @@ public class gameLoop {
                     System.out.println("Your new hand " + player[playerNum].toString());
                     break;
 
-                } else if (choice == 2) {
+                } else if(choice == 2){
+                    System.out.println("What color card do you want");
+                    scan.nextLine();
+                    String cardColor = scan.nextLine();
+                    System.out.println(cardColor);
+                    boolean run = true;
+                    for (int i = 0; i < 5; i++){
+                        if (board.getCardFromCardRow(i).getColor().equals(cardColor)){
+                            player[playerNum].pickupCard(board.getCardFromCardRow(i));
+                            board.removeCardFromCardRow(board.getCardFromCardRow(i));
+                            board.addCardToCardRow((card)deck.draw());
+                            run = false;
+                            break;
+                        }
+                    }
+                    if (run) {
+                        System.out.println("There is no card with that color, what would you like to do");
+                    }else break;
+                } else if (choice == 3) {
                     System.out.println("Where would you like your train to start?");
                     int location1 = scan.nextInt();
                     System.out.println("Where would you like your train to end?");
@@ -86,13 +112,13 @@ public class gameLoop {
                     boolean gotPlayed = playTrain(a , player[playerNum], board);
                     if (gotPlayed) {break;}
 
-                } else if (choice == 3) {
+                } else if (choice == 4) {
                     System.out.println(player[playerNum].checkPoints() + " points");
                     System.out.println(player[playerNum].checkTrains() + " trains remaining");
                     System.out.println(player[playerNum].toStringRout());
                     System.out.println("What else?");
 
-                } else if (choice == 4) {
+                } else if (choice == 5) {
                     player[playerNum].pickupRoutCard(routDeck);
                     System.out.println("Your new hand " + player[playerNum].toStringRout());
                     break;
