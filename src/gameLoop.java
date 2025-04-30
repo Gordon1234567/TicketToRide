@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class gameLoop {
@@ -68,7 +69,7 @@ public class gameLoop {
                     "\n2 - Place trains" +
                     "\n3 - Check your points, trains, and routs " +
                     "\n4 - Take a rout card" +
-                    "\n2 - Pick up 1 card form the card row");
+                    "\n5 - Pick up 1 card form the card row");
 
             while(true) {
 
@@ -124,7 +125,6 @@ public class gameLoop {
                     System.out.println("What color card do you want");
                     scan.nextLine();
                     String cardColor = scan.nextLine();
-                    System.out.println(cardColor);
                     boolean run = true;
                     for (int i = 0; i < 5; i++){
                         if (board.getCardFromCardRow(i).getColor().equals(cardColor)){
@@ -179,7 +179,9 @@ public class gameLoop {
                 return false;
 
                 // Then checks if the player has enough cards of specified color in their hand
-            }else if (x.hasNumCards(railroad.getColor(), railroad.getTrains())) {
+            } else if (railroad.getColor().equals("gray")) {
+                return true;
+            } else if (x.hasNumCards(railroad.getColor(), railroad.getTrains())) {
                 // This is not working, always says you don't have the necessary cards
 
                 board.playTrains(x, railroad);

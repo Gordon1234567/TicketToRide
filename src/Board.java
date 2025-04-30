@@ -47,15 +47,15 @@ public class Board {
         // a large portion of the work will be writing code so that
         // the user can input a variety of answers to
         // "Where would you like to place trains?" and still get it to apply.
-        A = new line(assignedCard[0].getColor(),2,1,2);
+        A = new line("red",2,1,2);
         B = new line(assignedCard[1].getColor(),4,1,3);
         C = new line(assignedCard[2].getColor(),3,2,4);
-        D = new line(assignedCard[0].getColor(),1,3,4);
+        D = new line("red",1,3,4);
         E = new line(assignedCard[1].getColor(),5,4,5);
         F = new line(assignedCard[2].getColor(),2,3,7);
         G = new line(assignedCard[2].getColor(),3,6,5);
         H = new line(assignedCard[2].getColor(),1,5,8);
-        I = new line(assignedCard[0].getColor(),6,7,8);
+        I = new line("red",6,7,8);
         J = new line(assignedCard[0].getColor(),4,5,9);
         K = new line(assignedCard[1].getColor(),1,9,10);
         L = new line(assignedCard[2].getColor(),1,5,10);
