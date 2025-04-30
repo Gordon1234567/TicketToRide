@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.util.function.Predicate;
 
 
@@ -19,6 +16,7 @@ public class Hand {
    // Trying to make hand a hashMap
     private HashMap<String,Integer> hand = new HashMap<>();
 
+
     /**
      * the points accumulated
      */
@@ -34,6 +32,8 @@ public class Hand {
      */
     private int playerNumber;
 
+    private ArrayList<HashSet<Integer>> groups = new ArrayList<>();
+
     /**
      * creates an empty hand
      */
@@ -48,6 +48,47 @@ public class Hand {
     public void setPlayerNumber(int playerNumber) {
         this.playerNumber = playerNumber;
     }
+
+    public void addGroup(HashSet<Integer> group) {
+        if (groups.isEmpty()){
+            groups.add(group);
+        }else {
+            ArrayList<HashSet<Integer>> delete = new ArrayList<>();
+            HashSet<Integer> combinedGroup = group;
+            for (int i = 0; i < groups.size(); i++){
+                HashSet<Integer> a = groups.get(i);
+                if (hasSame(a,combinedGroup)){
+                    combinedGroup = setSame(a,combinedGroup);
+                    delete.add(groups.get(i));
+                }
+            }
+            for (int i = 0; i < delete.size(); i++){
+                groups.remove(delete.get(i));
+            }
+        }
+
+    }
+
+
+    public boolean hasSame(HashSet<Integer> a, HashSet<Integer> b){
+        for (Integer e : a){
+            if (b.contains(e)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public HashSet<Integer> setSame(HashSet<Integer> a, HashSet<Integer> b) {
+        for (Integer e : a){
+            if (!b.contains(e)){
+                b.add(e);
+            }
+        }
+        return b;
+    }
+
+
 
     /**
      * This adds 2 cards into the players hand
@@ -133,4 +174,6 @@ public class Hand {
     public boolean hasNumCards(String color, int frequency) {
         return hand.getOrDefault(color, 0) >= frequency;
     }
+
+
 }

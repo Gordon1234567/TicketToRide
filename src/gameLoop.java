@@ -68,9 +68,19 @@ public class gameLoop {
                     break;
 
                 } else if (choice == 2) {
-                    System.out.println("Where would you like to place Trains?");
-                    int location = scan.nextInt();
-                    boolean gotPlayed = playTrain(location, player[playerNum], board);
+                    System.out.println("Where would you like your train to start?");
+                    int location1 = scan.nextInt();
+                    System.out.println("Where would you like your train to end?");
+                    int location2 = scan.nextInt();
+                    line a = new line();
+                    for (int i = 0; i < board.getLength(); i++){
+                        if (board.getLine(i).getLocations().contains(location2) && board.getLine(i).getLocations().contains(location1)){
+                            a = board.getLine(i);
+
+                        }
+                    }
+
+                    boolean gotPlayed = playTrain(a , player[playerNum], board);
                     if (gotPlayed) {break;}
 
                 } else if (choice == 3) {
@@ -98,9 +108,9 @@ public class gameLoop {
 
     /**
      * This will be given the line that the player wants to play, it will try to play trains there
-     * @param line is the line the player wants to play on
+     * @param railroad is the line the player wants to play on
      */
-    public boolean playTrain(int line, Hand x, Board board) {
+    public boolean playTrain(line railroad, Hand x, Board board) {
         /**
          * This is a boolean so that if the player doesn't meet
          * the requirements for the line chosen, the player's turn
@@ -109,21 +119,22 @@ public class gameLoop {
 
         try {
             // first checks if the line is full
-            if (board.getLine(line).getFull()) {
+            if (railroad.getFull()) {
                 System.out.println("Line already taken");
                 return false;
 
                 // then checks if the player has enough trains left
-            } else if(x.getTrains() < board.getLine(line).getTrains()){
+            } else if(x.getTrains() < railroad.getTrains()){
                 System.out.println("You don't have enough trains for that");
                 return false;
 
                 // Then checks if the player has enough cards of specified color in their hand
-            }else if (x.hasNumCards(board.getLine(line).getColor(), board.getLine(line).getTrains())) {
+            }else if (x.hasNumCards(railroad.getColor(), railroad.getTrains())) {
                 // This is not working, always says you don't have the necessary cards
 
-                board.playTrains(x, line);
-                System.out.println("That's "+ board.getLine(line).getPoints() + " points");
+                board.playTrains(x, railroad);
+                x.addGroup(railroad.getLocations());
+                System.out.println("That's "+ railroad.getPoints() + " points");
                 return true;
 
             } else {
