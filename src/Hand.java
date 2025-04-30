@@ -113,12 +113,14 @@ public class Hand {
 
         // Removes the first instance of a card of a specific color the specified number of times
         // It's removing all of that color right now
-        for (int i = 0; i < cardsRemoved; i++) {
-            hand.remove(x.getColor());
-        }
+
+        hand.remove(x.getColor());
+
         points = points + x.getPoints();
         trains = trains - x.getTrains();
     }
+
+
 
     /**
      * this returns the players number of points
