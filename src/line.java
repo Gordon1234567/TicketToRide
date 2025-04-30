@@ -106,10 +106,8 @@ public class line {
     public String toString() {
         char firstChar = color.charAt(0);
         if(full) {
-            return (owner + "P");
+            return ("P" + owner);
             // I want to make this show the player occupying the space
-            // This, not being the same char length as the unoccupied display, will mess up the chart
-            // If it worked anyway, currently not updating board display
         }else{
             return ("" + trains + firstChar);
         }

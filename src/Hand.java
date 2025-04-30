@@ -100,12 +100,16 @@ public class Hand {
      * This adds 2 cards into the players hand
      */
     public void pickupCards(cardDeck theDeck){
-        card one = (card) theDeck.draw();
-        int currentCount = hand.getOrDefault(one.getColor(),0);
-        hand.put(one.getColor(),currentCount + 1);
-        card two = (card)theDeck.draw();
-        int currentCount2 = hand.getOrDefault(two.getColor(),0);
-        hand.put(two.getColor(),currentCount2 + 1);
+        if(theDeck.getRemaining() == 0 || theDeck.getRemaining() == 1){
+            System.out.println("No more Cards in the deck");
+        }else {
+            card one = (card) theDeck.draw();
+            int currentCount = hand.getOrDefault(one.getColor(), 0);
+            hand.put(one.getColor(), currentCount + 1);
+            card two = (card) theDeck.draw();
+            int currentCount2 = hand.getOrDefault(two.getColor(), 0);
+            hand.put(two.getColor(), currentCount2 + 1);
+        }
     }
 
     /**
