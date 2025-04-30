@@ -13,7 +13,10 @@ public class gameLoop {
         Scanner scan = new Scanner(System.in);
 
         // Set how many players there will be
-        System.out.println("How many people are playing?");
+        System.out.println("Welcome rail tycoon to Ticket To Ride!");
+        System.out.println("The Ohio valley is fit to be the industrial heartland of the country, it's up to you to bring the steam and steel to this land");
+        System.out.println();
+        System.out.println("How many capitalists will be playing?");
         int numPlayers = scan.nextInt();
         Hand[] player = new Hand[numPlayers];
 
@@ -41,7 +44,7 @@ public class gameLoop {
         int playerNum = 0;
 
         while(true){
-            System.out.println("_________________________________________________");
+            System.out.println("___________________________________________________________________");
             board.printBoard();
 
             if(player[playerNum].getTrains() == 0){
@@ -170,7 +173,7 @@ public class gameLoop {
         try {
             // first checks if the line is full
             if (railroad.getFull()) {
-                System.out.println("Line already taken");
+                System.out.println("Line already built");
                 return false;
 
                 // then checks if the player has enough trains left
@@ -195,7 +198,7 @@ public class gameLoop {
             }
         }catch(Exception e){
                 // This will obviously be changed when we add multiple ways to recognize user input
-                System.out.println("Please input in the right way");
+                System.out.println("Please input the correct the right way, lower numbered location first");
                 return false;
         }
     }
