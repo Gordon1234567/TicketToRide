@@ -93,9 +93,10 @@ public class line {
     public String toString() {
         char firstChar = color.charAt(0);
         if(full) {
-            return ("player" + owner + "s");
+            return ("[]");
             // I want to make this show the player occupying the space
-            // This, not being the same char length as the unoccupied display, will mess up the chart
+            // Unless we want to rework the ASCII chart we can only have a 2 character long output.
+            // Which I could do, but definetly not top priority.
             // If it worked anyway, currently not updating board display
         }else{
             return ("" + trains + firstChar);

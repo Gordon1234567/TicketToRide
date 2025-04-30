@@ -69,6 +69,7 @@ public class Board {
      * This will print the Board to the console
      */
     public void printBoard(){
+        // Ugh! I can't figure out why it isn't printing out the new board, it's updating the lines to full properly
         System.out.println(board);
     }
 
