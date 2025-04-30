@@ -182,7 +182,17 @@ public class gameLoop {
                 return false;
 
                 // Then checks if the player has enough cards of specified color in their hand
-            } else if (railroad.getColor().equals("gray")) {
+            } else if (railroad.getColor().equals("&")) {
+                Scanner scan = new Scanner(System.in);
+                System.out.println("choose what colors you will use for the & track you need to choose " + railroad.getTrains() + " cards");
+                for (int i = 0; i < railroad.getTrains(); i++){
+                    System.out.println("what card do you want to use: " + "[" + i+1 + "-"+railroad.getTrains() + "]");
+                    String color = scan.next();
+                    System.out.println(color);
+                    board.playTrains(x, railroad);
+                }
+                x.addGroup(railroad.getLocations());
+                x.addPoints(railroad.getPoints());
                 return true;
             } else if (x.hasNumCards(railroad.getColor(), railroad.getTrains())) {
                 // This is not working, always says you don't have the necessary cards

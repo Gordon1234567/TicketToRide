@@ -117,6 +117,9 @@ public class Hand {
         hand.put(a.getColor(), currentCount + 1);
     }
 
+    public void addPoints(int i){
+        points+=i;
+    }
     /**
      * will remove a specified number of cards of the specified color
      * will add points to the player
@@ -124,15 +127,19 @@ public class Hand {
      */
     public void placeTrains(line x) {
 
-        int cardsRemoved = x.getTrains();
+        if (!x.getColor().equals("&")) {
+            int cardsRemoved = x.getTrains();
 
-        // Removes the first instance of a card of a specific color the specified number of times
-        // It's removing all of that color right now
+            // Removes the first instance of a card of a specific color the specified number of times
+            // It's removing all of that color right now
 
-        hand.put(x.getColor(),hand.get(x.getColor())-cardsRemoved);
+            hand.put(x.getColor(), hand.get(x.getColor()) - cardsRemoved);
 
-        points = points + x.getPoints();
-        trains = trains - x.getTrains();
+            points = points + x.getPoints();
+            trains = trains - x.getTrains();
+        }else {
+            hand.put(x.getColor(), hand.get(x.getColor()) - 1);
+        }
     }
 
 

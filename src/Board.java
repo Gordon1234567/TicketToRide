@@ -30,7 +30,7 @@ public class Board {
     /**
      * A record of the colored cards being used
      */
-    private card [] assignedCard = {new card("red"), new card("blue"),new card ("green")};
+
 
     /**
      * lines will hold all the lines on the board
@@ -47,19 +47,20 @@ public class Board {
         // a large portion of the work will be writing code so that
         // the user can input a variety of answers to
         // "Where would you like to place trains?" and still get it to apply.
+        // for gray lines USE & as the symbol
         A = new line("red",2,1,2);
-        B = new line(assignedCard[1].getColor(),4,1,3);
-        C = new line(assignedCard[2].getColor(),3,2,4);
+        B = new line("blue",4,1,3);
+        C = new line("green",3,2,4);
         D = new line("red",1,3,4);
-        E = new line(assignedCard[1].getColor(),5,4,5);
-        F = new line(assignedCard[2].getColor(),2,3,7);
-        G = new line(assignedCard[2].getColor(),3,6,5);
-        H = new line(assignedCard[2].getColor(),1,5,8);
+        E = new line("blue",5,4,5);
+        F = new line("green",2,3,7);
+        G = new line("green",3,6,5);
+        H = new line("green",1,5,8);
         I = new line("red",6,7,8);
-        J = new line(assignedCard[0].getColor(),4,5,9);
-        K = new line(assignedCard[1].getColor(),1,9,10);
-        L = new line(assignedCard[2].getColor(),1,5,10);
-        M = new line(assignedCard[1].getColor(),2,8,10);
+        J = new line("red",4,5,9);
+        K = new line("blue",1,9,10);
+        L = new line("green",1,5,10);
+        M = new line("blue",2,8,10);
         lines.add(A);
         lines.add(B);
         lines.add(C);
