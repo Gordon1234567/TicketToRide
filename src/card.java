@@ -3,7 +3,7 @@
  *
  * This class will make cards, each can be a different color
  */
-public class card {
+public class card implements cardInterface {
     /**
      * color is the color of the card
      */

@@ -17,8 +17,11 @@ public class gameLoop {
         Hand[] player = new Hand[numPlayers];
 
         // create and shuffle a deck
-        Deck deck = new Deck();
+        cardDeck deck = new cardDeck();
         deck.shuffle();
+
+        routDeck routDeck = new routDeck();
+        routDeck.shuffle();
 
         Board board = new Board();
 
@@ -55,8 +58,8 @@ public class gameLoop {
             System.out.println("Player " + (playerNum + 1) + " would you like to:" +
                     "\n1 - Pick up cards" +
                     "\n2 - Place trains" +
-                    "\n3 - Check your points" +
-                    "\n4 - Check your trains");
+                    "\n3 - Check your points, trains, and routs " +
+                    "\n4 - Take a rout card");
 
             while(true) {
 
@@ -85,15 +88,19 @@ public class gameLoop {
 
                 } else if (choice == 3) {
                     System.out.println(player[playerNum].checkPoints() + " points");
+                    System.out.println(player[playerNum].checkTrains() + " trains remaining");
+                    System.out.println(player[playerNum].toStringRout());
                     System.out.println("What else?");
 
                 } else if (choice == 4) {
-                    System.out.println(player[playerNum].checkTrains() + " trains remaining");
-                    System.out.println("What else?");
-                } else {
+                    player[playerNum].pickupRoutCard(routDeck);
+                    System.out.println("Your new hand " + player[playerNum].toStringRout());
+                    break;
+                } else{
                     System.out.println("Not an option");
                 }
             }
+            player[playerNum].checkRouts();
             if(playerNum < numPlayers-1){
                 playerNum++;
             } else { playerNum = 0;}

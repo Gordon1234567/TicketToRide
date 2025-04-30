@@ -10,29 +10,9 @@ public class Deck {
     /**
      * the deck. There will be an equal number of each color in the deck
      */
-    private Stack<card> deck = new Stack<>();
+    protected Stack<cardInterface> deck = new Stack<>();
     // ^Think I'm gonna turn this into a queue and have the used cards get shuffled and place at the bottom of the deck
-    /**
-     * this is a list of the colors in the deck
-     */
-    private String [] colors = {"red", "blue", "green"};
 
-    /**
-     * unshuffled deck constructor
-     */
-    public Deck(){
-        for (int i = 0; i < 30; i++) {
-            deck.add(new card(colors[0]));
-        }
-
-        for (int i = 0; i < 30; i++) {
-            deck.add(new card(colors[1]));
-        }
-
-        for (int i = 0; i < 30; i++) {
-            deck.add(new card(colors[2]));
-        }
-    }
 
     /**
      * this will randomize the deck
@@ -58,9 +38,9 @@ public class Deck {
      * returns the top card and removes it from the deck
      * @return
      */
-    public card draw(){
+    public cardInterface draw(){
         // returns the top card and removes it from the deck
-        card c = deck.getFirst();
+        cardInterface c = deck.getFirst();
         deck.removeFirst();
         return c;
     }
@@ -70,13 +50,12 @@ public class Deck {
      * @return the number of cards
      */
     public int getRemaining(){
-        // returns the number of cards in the deck in case it is low/empty
-        return 1;
+        return deck.size();
     }
 
     //swaps 2 cards in this.cards
     public void swap(int index1, int index2) {
-        card temp = deck.get(index1);
+        cardInterface temp = deck.get(index1);
         // this.cards[index1] = this.card[index2];
         deck.set(index1,deck.get(index2));
         // this.cards[index2] = temp

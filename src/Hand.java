@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.*;
 import java.util.function.Predicate;
 
@@ -15,6 +16,7 @@ public class Hand {
    // private ArrayList<card> hand = new ArrayList<>();
    // Trying to make hand a hashMap
     private HashMap<String,Integer> hand = new HashMap<>();
+    private ArrayList<rout> routs = new ArrayList<>();
 
 
     /**
@@ -65,6 +67,7 @@ public class Hand {
             for (int i = 0; i < delete.size(); i++){
                 groups.remove(delete.get(i));
             }
+            groups.add(combinedGroup);
         }
 
     }
@@ -88,16 +91,19 @@ public class Hand {
         return b;
     }
 
-
+    public void pickupRoutCard(routDeck theDeck){
+        rout one = (rout) theDeck.draw();
+        routs.add(one);
+    }
 
     /**
      * This adds 2 cards into the players hand
      */
-    public void pickupCards(Deck theDeck){
-        card one = theDeck.draw();
+    public void pickupCards(cardDeck theDeck){
+        card one = (card) theDeck.draw();
         int currentCount = hand.getOrDefault(one.getColor(),0);
         hand.put(one.getColor(),currentCount + 1);
-        card two = theDeck.draw();
+        card two = (card)theDeck.draw();
         int currentCount2 = hand.getOrDefault(two.getColor(),0);
         hand.put(two.getColor(),currentCount2 + 1);
     }
@@ -169,6 +175,28 @@ public class Hand {
         print.deleteCharAt(print.length()-1);
         return print.toString();
 
+    }
+
+    public String toStringRout(){
+        StringBuilder print = new StringBuilder();
+        for (int i = 0; i < routs.size(); i++) {
+            print.append("You have rout from " + routs.get(i).getPoint1() + " to " + routs.get(i).getPoint2() + "\n" );
+        }
+
+        return print.toString();
+    }
+
+    public void checkRouts(){
+        ArrayList<Integer> deleate = new ArrayList<>();
+        for (int i = 0; i < routs.size(); i++){
+            for (int j = 0; j < groups.size(); j++){
+                if (groups.get(j).contains(routs.get(i).getPoint1()) && groups.get(j).contains(routs.get(i).getPoint2())){
+                    System.out.println("You have completed your rout form " + routs.get(i).getPoint1() + " to " + routs.get(i).getPoint2() + " gaining " + routs.get(i).getPoints() + "  points");
+                    points+=routs.get(i).getPoints();
+                    //deleate.add(routs.get(i));
+                }
+            }
+        }
     }
 
     // this will tell if a hand contains the specified number of a specific color of card
