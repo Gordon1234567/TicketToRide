@@ -183,33 +183,33 @@ public class gameLoop {
 
         m.put("one",1);
         m.put("One",1);
-        m.put("Toledo",1);
-        m.put("toledo",1);
+        m.put("Gary",1);
+        m.put("gary",1);
 
         m.put("Two",2);
         m.put("two",2);
-        m.put("Cleveland",2);
-        m.put("cleveland",2);
+        m.put("Toledo",2);
+        m.put("toledo",2);
 
         m.put("Three",3);
         m.put("three",3);
-        m.put("Dayton",3);
-        m.put("dayton",3);
+        m.put("Indianapolis",3);
+        m.put("indianapolis",3);
 
         m.put("Four",4);
         m.put("four",4);
-        m.put("Columbus",4);
-        m.put("columbus",4);
+        m.put("Dayton",4);
+        m.put("dayton",4);
 
         m.put("Five",5);
         m.put("five",5);
-        m.put("Pittsburgh",5);
-        m.put("pittsburgh",5);
+        m.put("Columbus",5);
+        m.put("columbus",5);
 
         m.put("Six",6);
         m.put("six",6);
-        m.put("Erie",6);
-        m.put("erie",6);
+        m.put("Cleveland",6);
+        m.put("cleveland",6);
 
         m.put("Seven",7);
         m.put("seven",7);
@@ -218,8 +218,18 @@ public class gameLoop {
 
         m.put("Eight",8);
         m.put("eight",8);
-        m.put("Wheeling",8);
-        m.put("wheeling",8);
+        m.put("Charleston",8);
+        m.put("charleston",8);
+
+        m.put("Nine",9);
+        m.put("nine",9);
+        m.put("Erie",9);
+        m.put("erie",9);
+
+        m.put("Ten",10);
+        m.put("ten",10);
+        m.put("Pittsburgh",10);
+        m.put("pittsburgh",10);
 
         try{
             return m.get(input);
