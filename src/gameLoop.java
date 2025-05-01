@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class gameLoop {
@@ -16,8 +17,26 @@ public class gameLoop {
         System.out.println("Welcome rail tycoon to Ticket To Ride!");
         System.out.println("The Ohio valley is fit to be the industrial heartland of the country, it's up to you to bring the steam and steel to this land");
         System.out.println();
-        System.out.println("How many capitalists will be playing?");
-        int numPlayers = scan.nextInt();
+        System.out.println("How many capitalists will be playing? 1-6 players allowed");
+
+        int numPlayers = 0;
+        boolean going = true;
+        while (going) {
+            going = false;
+            try {
+
+                numPlayers = scan.nextInt();
+                if (numPlayers < 1 || numPlayers > 6){
+                    System.out.println("Not an option");
+                    going = true;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Not an option");
+                going = true;
+                scan.nextLine();
+            }
+
+        }
         Hand[] player = new Hand[numPlayers];
 
         // create and shuffle a deck
@@ -62,12 +81,13 @@ public class gameLoop {
                 break;
             }
 
-            System.out.println("Your hand:");
-            System.out.println(player[playerNum].toString());
-            System.out.println();
             System.out.println("The card row has");
             System.out.println(board.printCardRow());
-            System.out.println("Player " + (playerNum + 1) + " would you like to:" +
+
+            System.out.println("\nPlayer " +(playerNum + 1) + "s turn");
+            System.out.println(player[playerNum].toString());
+
+            System.out.println("\nwould you like to:" +
                     "\n1 - Pick up 2 random cards" +
                     "\n2 - Place trains" +
                     "\n3 - Check your points, trains, and routs " +
@@ -75,13 +95,34 @@ public class gameLoop {
                     "\n5 - Pick up 1 card form the card row");
 
             while(true) {
+                int choice = 10;
+                boolean go = true;
+                while (go) {
+                    go = false;
+                    try {
 
-                int choice = scan.nextInt();
+                        choice = scan.nextInt();
+                    } catch (InputMismatchException e) {
+                        System.out.println("Not an option");
+                        go = true;
+                        scan.nextLine();
+                    }
+                }
 
                 if (choice == 1) {
-                    player[playerNum].pickupCards(deck);
-                    System.out.println("Your new hand " + player[playerNum].toString());
-                    break;
+                    if (deck.getRemaining() >= 2 ) {
+                        player[playerNum].pickupCards(deck);
+                        System.out.println(player[playerNum].toString());
+                        break;
+                    }else{
+                        System.out.println("There are no more cards in the deck, what would you like to do");
+                        System.out.println("\nwould you like to:" +
+                                "\n1 - Pick up 2 random cards" +
+                                "\n2 - Place trains" +
+                                "\n3 - Check your points, trains, and routs " +
+                                "\n4 - Take a rout card" +
+                                "\n5 - Pick up 1 card form the card row");
+                    }
 
                 }else if (choice == 2) {
                     System.out.println("Where would you like your train to start?");
@@ -97,6 +138,7 @@ public class gameLoop {
 
                     System.out.println("Where would you like your train to end?");
                     String input2 = scan.next();
+                    scan.nextLine();
                     int location2 = 0;
                     try{
                         location2 = Integer.parseInt(input2);
@@ -140,6 +182,12 @@ public class gameLoop {
                     }
                     if (run) {
                         System.out.println("There is no card with that color, what would you like to do");
+                        System.out.println("\nwould you like to:" +
+                                "\n1 - Pick up 2 random cards" +
+                                "\n2 - Place trains" +
+                                "\n3 - Check your points, trains, and routs " +
+                                "\n4 - Take a rout card" +
+                                "\n5 - Pick up 1 card form the card row");
                     }else break;
                 }  else{
 
@@ -208,7 +256,14 @@ public class gameLoop {
             }
         }catch(Exception e){
                 // This will obviously be changed when we add multiple ways to recognize user input
-                System.out.println("Please input the correct the right way, lower numbered location first");
+                System.out.println("Please input the correct way, lower numbered location first");
+            System.out.println("\nwould you like to:" +
+                    "\n1 - Pick up 2 random cards" +
+                    "\n2 - Place trains" +
+                    "\n3 - Check your points, trains, and routs " +
+                    "\n4 - Take a rout card" +
+                    "\n5 - Pick up 1 card form the card row");
+
                 return false;
         }
     }
