@@ -255,6 +255,7 @@ public class gameLoop {
                 String color="";
                 for (int i = 0; i < railroad.getTrains(); i++){
                     System.out.println("what card do you want to use: " + "[" + (i+1) + "-"+railroad.getTrains() + "]");
+                    System.out.println(x.toString());
                     boolean runfast = true;
                     while (runfast) {
                         runfast = false;
@@ -313,51 +314,61 @@ public class gameLoop {
         m.put("One",1);
         m.put("Gary",1);
         m.put("gary",1);
+        m.put("1",1);
 
         m.put("Two",2);
         m.put("two",2);
         m.put("Toledo",2);
         m.put("toledo",2);
+        m.put("2",2);
 
         m.put("Three",3);
         m.put("three",3);
         m.put("Indianapolis",3);
         m.put("indianapolis",3);
+        m.put("3",3);
 
         m.put("Four",4);
         m.put("four",4);
         m.put("Dayton",4);
         m.put("dayton",4);
+        m.put("4",4);
 
         m.put("Five",5);
         m.put("five",5);
         m.put("Columbus",5);
         m.put("columbus",5);
+        m.put("5",5);
 
         m.put("Six",6);
         m.put("six",6);
         m.put("Cleveland",6);
         m.put("cleveland",6);
+        m.put("6",6);
 
         m.put("Seven",7);
         m.put("seven",7);
         m.put("Cincinnati",7);
         m.put("cincinnati",7);
+        m.put("7",7);
 
         m.put("Eight",8);
         m.put("eight",8);
         m.put("Charleston",8);
         m.put("charleston",8);
+        m.put("8",8);
 
         m.put("Nine",9);
         m.put("nine",9);
         m.put("Erie",9);
         m.put("erie",9);
+        m.put("9",9);
 
         m.put("Ten",10);
         m.put("ten",10);
         m.put("Pittsburgh",10);
         m.put("pittsburgh",10);
+        m.put("10",10);
 
         try{
             return m.get(input);

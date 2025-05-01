@@ -155,7 +155,6 @@ public class Hand {
             points = points + x.getPoints();
             trains = trains - x.getTrains();
         }else {
-            System.out.println(x.getColorForGray());
             hand.put(x.getColorForGray(), hand.get(x.getColorForGray()) - 1);
         }
     }

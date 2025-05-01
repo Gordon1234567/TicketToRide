@@ -52,13 +52,13 @@ public class Board {
         B = new line("blue",4,1,3);
         C = new line("green",3,2,4);
         D = new line("red",1,3,4);
-        E = new line("blue",5,4,5);
+        E = new line("&",5,4,5);
         F = new line("green",2,3,7);
-        G = new line("green",3,6,5);
+        G = new line("blue",3,6,5);
         H = new line("green",1,5,8);
         I = new line("red",6,7,8);
         J = new line("red",4,5,9);
-        K = new line("blue",1,9,10);
+        K = new line("&",1,9,10);
         L = new line("green",1,5,10);
         M = new line("blue",2,8,10);
         lines.add(A);
@@ -85,9 +85,9 @@ public class Board {
         System.out.println(
                 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" +
                         "\n{  (1)--" + A.toString() + "--(2)          (6)      (9)} 1-Gary         10-Pittsburgh" +
-                        "\n{   |        |            |     _/ | } 2-Toledo" +
-                        "\n{  " + B.toString() + "       " + C.toString() + "           " + G.toString() + "   " + J.toString() + "  " + K.toString() + " } 3-Indianapolis" +
-                        "\n{   |        |            | _/     | } 4-Dayton" +
+                        "\n{   |        |            |     _/ | } 2-Toledo       Train lines are in the form [number, letter]" +
+                        "\n{  " + B.toString() + "       " + C.toString() + "           " + G.toString() + "   " + J.toString() + "  " + K.toString() + " } 3-Indianapolis b is blue, g is green, r is red" +
+                        "\n{   |        |            | _/     | } 4-Dayton       & means you can use any cards" +
                         "\n{  (3)--" + D.toString() + "--(4)----" + E.toString() + "----(5)--" + L.toString() + "-(10)} 5-Columbus" +
                         "\n{   |                     |      _/  } 6-Cleveland" +
                         "\n{  " + F.toString() + "                     " + H.toString() + "   " + M.toString() + "    } 7-Cincinnati" +
