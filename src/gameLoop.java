@@ -9,7 +9,7 @@ public class gameLoop {
 
     }
 
-// We will have to find what exceptions will be thrown if any and account for those
+
     public void loop() {
         Scanner scan = new Scanner(System.in);
 
@@ -17,7 +17,7 @@ public class gameLoop {
         System.out.println("Welcome rail tycoon to Ticket To Ride!");
         System.out.println("The Ohio valley is fit to be the industrial heartland of the country, it's up to you to bring the steam and steel to this land");
         System.out.println();
-        System.out.println("How many capitalists will be playing? 1-6 players allowed");
+        System.out.println("How many capitalists will be playing? 1-3 players allowed");
 
         int numPlayers = 0;
         boolean going = true;
@@ -26,7 +26,7 @@ public class gameLoop {
             try {
 
                 numPlayers = scan.nextInt();
-                if (numPlayers < 1 || numPlayers > 6){
+                if (numPlayers < 1 || numPlayers > 3){
                     System.out.println("Not an option");
                     going = true;
                 }
@@ -237,7 +237,6 @@ public class gameLoop {
          * will continue to loop.
          */
 
-        //try {
             // first checks if the line is full
             if (railroad.getFull()) {
                 System.out.println("Line already built");
@@ -276,8 +275,6 @@ public class gameLoop {
                 x.addPoints(railroad.getPoints());
                 return true;
             } else if (x.hasNumCards(railroad.getColor(), railroad.getTrains())) {
-                // This is not working, always says you don't have the necessary cards
-
                 board.playTrains(x, railroad);
                 x.addGroup(railroad.getLocations());
                 System.out.println("That's "+ railroad.getPoints() + " points");
@@ -287,18 +284,6 @@ public class gameLoop {
                 System.out.println("You don't have the required cards");
                 return false;
             }
-//        }catch(Exception e){
-//                // This will obviously be changed when we add multiple ways to recognize user input
-//                System.out.println("Please input the correct way, lower numbered location first");
-//            System.out.println("\nwould you like to:" +
-//                    "\n1 - Pick up 2 random cards" +
-//                    "\n2 - Place trains" +
-//                    "\n3 - Check your points, trains, and routs " +
-//                    "\n4 - Take a rout card" +
-//                    "\n5 - Pick up 1 card form the card row");
-//
-//                return false;
-//        }
     }
 
     /**

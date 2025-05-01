@@ -13,8 +13,7 @@ public class Hand {
     /**
      * the cards someone has in their hand
      */
-   // private ArrayList<card> hand = new ArrayList<>();
-   // Trying to make hand a hashMap
+
     private HashMap<String,Integer> hand = new HashMap<>();
     private ArrayList<rout> routs = new ArrayList<>();
 
@@ -147,9 +146,6 @@ public class Hand {
         if (!x.getColor().equals("&")) {
             int cardsRemoved = x.getTrains();
 
-            // Removes the first instance of a card of a specific color the specified number of times
-            // It's removing all of that color right now
-
             hand.put(x.getColor(), hand.get(x.getColor()) - cardsRemoved);
 
             points = points + x.getPoints();
@@ -229,8 +225,7 @@ public class Hand {
         }
     }
 
-    // this will tell if a hand contains the specified number of a specific color of card
-    // But I can't get it working
+
     public boolean hasNumCards(String color, int frequency) {
         return hand.getOrDefault(color, 0) >= frequency;
     }

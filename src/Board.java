@@ -36,18 +36,13 @@ public class Board {
      * lines will hold all the lines on the board
      */
 
-    //private HashMap<Integer,line> lines = new HashMap<>(7);
-    // ^This may work as a hashSet^ instead of an arrayList
     private ArrayList<line> lines = new ArrayList<>();
 
     /**
      * This will create a Board using a given ArrayList of lines
      */
     public Board(){
-        // a large portion of the work will be writing code so that
-        // the user can input a variety of answers to
-        // "Where would you like to place trains?" and still get it to apply.
-        // for gray lines USE & as the symbol
+
         A = new line("&",2,1,2);
         B = new line("blue",4,1,3);
         C = new line("green",3,2,4);
