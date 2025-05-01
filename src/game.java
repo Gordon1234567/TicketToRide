@@ -1,5 +1,10 @@
 import java.util.Scanner;
 
+/**
+ * @author Gordon Schartner
+ * @author Samuel Rees
+ */
+
 public class game {
     /**
      * This will just run the game
