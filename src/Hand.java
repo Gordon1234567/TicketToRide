@@ -43,6 +43,14 @@ public class Hand {
 
     }
 
+
+    public void setUpHand(){
+        hand.put("red",0);
+        hand.put("blue", 0);
+        hand.put("green",0);
+    }
+
+
     public int getTotalCards(){
         return hand.get("red") + hand.get("blue") + hand.get("green");
     }
@@ -53,6 +61,7 @@ public class Hand {
 
     public void setPlayerNumber(int playerNumber) {
         this.playerNumber = playerNumber;
+
     }
 
     public void addGroup(HashSet<Integer> group) {
@@ -116,6 +125,7 @@ public class Hand {
             card two = (card) theDeck.draw();
             int currentCount2 = hand.getOrDefault(two.getColor(), 0);
             hand.put(two.getColor(), currentCount2 + 1);
+
         }
     }
 
@@ -145,7 +155,8 @@ public class Hand {
             points = points + x.getPoints();
             trains = trains - x.getTrains();
         }else {
-            hand.put(x.getColor(), hand.get(x.getColor()) - 1);
+            System.out.println(x.getColorForGray());
+            hand.put(x.getColorForGray(), hand.get(x.getColorForGray()) - 1);
         }
     }
 

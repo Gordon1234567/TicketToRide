@@ -56,6 +56,7 @@ public class gameLoop {
 
         for (int i = 0; i < numPlayers; i++) {
             player[i] = new Hand();
+            player[i].setUpHand();
             player[i].pickupCards(deck);
             player[i].setPlayerNumber(i+1);
         }
@@ -236,7 +237,7 @@ public class gameLoop {
          * will continue to loop.
          */
 
-        try {
+        //try {
             // first checks if the line is full
             if (railroad.getFull()) {
                 System.out.println("Line already built");
@@ -251,12 +252,14 @@ public class gameLoop {
             } else if (railroad.getColor().equals("&") && x.getTotalCards() >= railroad.getTrains()) {
                 Scanner scan = new Scanner(System.in);
                 System.out.println("choose what colors you will use for the & track you need to choose " + railroad.getTrains() + " cards");
+                String color="";
                 for (int i = 0; i < railroad.getTrains(); i++){
                     System.out.println("what card do you want to use: " + "[" + (i+1) + "-"+railroad.getTrains() + "]");
                     boolean runfast = true;
                     while (runfast) {
                         runfast = false;
-                        String color = scan.next();
+
+                        color = scan.next();
                         if (!color.equals("red") && !color.equals("blue") && !color.equals("green")){
                             System.out.println("that is not a color try again");
                             runfast = true;
@@ -265,7 +268,7 @@ public class gameLoop {
                             runfast = true;
                         }
                     }
-
+                    railroad.setColorForGray(color);
                     board.playTrains(x, railroad);
                 }
                 x.addGroup(railroad.getLocations());
@@ -283,18 +286,18 @@ public class gameLoop {
                 System.out.println("You don't have the required cards");
                 return false;
             }
-        }catch(Exception e){
-                // This will obviously be changed when we add multiple ways to recognize user input
-                System.out.println("Please input the correct way, lower numbered location first");
-            System.out.println("\nwould you like to:" +
-                    "\n1 - Pick up 2 random cards" +
-                    "\n2 - Place trains" +
-                    "\n3 - Check your points, trains, and routs " +
-                    "\n4 - Take a rout card" +
-                    "\n5 - Pick up 1 card form the card row");
-
-                return false;
-        }
+//        }catch(Exception e){
+//                // This will obviously be changed when we add multiple ways to recognize user input
+//                System.out.println("Please input the correct way, lower numbered location first");
+//            System.out.println("\nwould you like to:" +
+//                    "\n1 - Pick up 2 random cards" +
+//                    "\n2 - Place trains" +
+//                    "\n3 - Check your points, trains, and routs " +
+//                    "\n4 - Take a rout card" +
+//                    "\n5 - Pick up 1 card form the card row");
+//
+//                return false;
+//        }
     }
 
     /**

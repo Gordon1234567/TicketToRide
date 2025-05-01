@@ -10,6 +10,8 @@ public class line {
      * The color of cards needed
      */
     private String color;
+
+    private String colorForGray;
     /**
      * the number of cards needed
      */
@@ -30,6 +32,14 @@ public class line {
     private HashSet<Integer> locations = new HashSet<>();
     public line(){
 
+    }
+
+    public void setColorForGray(String colorForGray) {
+        this.colorForGray = colorForGray;
+    }
+
+    public String getColorForGray() {
+        return colorForGray;
     }
 
     /**
