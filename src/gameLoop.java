@@ -82,6 +82,9 @@ public class gameLoop {
                 break;
             }
 
+            System.out.println("Your hand:");
+            System.out.println(player[playerNum].toString());
+            System.out.println();
             System.out.println("The card row has");
             System.out.println(board.printCardRow());
 
@@ -93,7 +96,7 @@ public class gameLoop {
                     "\n2 - Place trains" +
                     "\n3 - Check your points, trains, and routs " +
                     "\n4 - Take a rout card" +
-                    "\n5 - Pick up 1 card form the card row");
+                    "\n5 - Pick up 1 card from the card row");
 
             while(true) {
                 int choice = 10;

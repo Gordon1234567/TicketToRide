@@ -1,3 +1,5 @@
+import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.Random;
 import java.util.Stack;
 
@@ -11,7 +13,6 @@ public class Deck {
      * the deck. There will be an equal number of each color in the deck
      */
     protected Stack<cardInterface> deck = new Stack<>();
-    // ^Think I'm gonna turn this into a queue and have the used cards get shuffled and place at the bottom of the deck
 
 
     /**

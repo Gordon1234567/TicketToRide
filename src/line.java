@@ -30,6 +30,7 @@ public class line {
     private int owner;
 
     private HashSet<Integer> locations = new HashSet<>();
+
     public line(){
 
     }

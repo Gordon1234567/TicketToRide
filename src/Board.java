@@ -104,6 +104,12 @@ public class Board {
         return lines.size();
     }
 
+    /**
+     * pulls the needed info from the selected line and the sets it to full
+     * with who played on it
+     * @param x
+     * @param railroad
+     */
     public void playTrains(Hand x, line railroad){
         x.placeTrains(railroad);
         railroad.setFull();
@@ -122,6 +128,11 @@ public class Board {
         cardRow.remove(a);
     }
 
+    /**
+     * prints the length of the line in trains and the color required if unplayed
+     * or prints the player who took the line if played
+     * @return
+     */
     public String printCardRow(){
         StringBuilder print = new StringBuilder();
         for (int i = 0; i < cardRow.size(); i++){
