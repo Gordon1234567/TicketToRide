@@ -9,7 +9,11 @@ public class gameLoop {
 
     }
 
-
+    /**
+     * This is the main method running the game
+     * intakes the number of players then makes a deck
+     *
+     */
     public void loop() {
         Scanner scan = new Scanner(System.in);
 
@@ -220,6 +224,12 @@ public class gameLoop {
             if(playerNum < numPlayers-1){
                 playerNum++;
             } else { playerNum = 0;}
+
+            if(deck.getRemaining() < 2){
+                cardDeck newDeck = new cardDeck();
+                newDeck.shuffle();
+                deck = newDeck;
+            }
         }
 
     }

@@ -25,13 +25,6 @@ public class Deck {
                 int randIntb = rand.nextInt(0, deck.size());
                 swap(randInta, randIntb);
             }
-
-        // planning to use my shuffle code from comp 1 with a few modifications
-        // though I don't know how that will work with a Stack
-
-        // Actually, we could make it a queue with a discard pile,
-        // shuffle the discard pile and add it to the bottom of the
-        // queue like people actually do with this game's deck
     }
 
 

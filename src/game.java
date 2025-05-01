@@ -14,7 +14,6 @@ public class game {
          * Then will run Turn in a loop for each player at a time,
          * printing board at the end of each turn while
          * checking if any each player runs out of trains at the end of their turn.
-         * Once a player runs out of trains the loop runs for each other player
-         * one more time and then gives a winner based on who has the most points
+         * Once a player runs out of trains the loop ends and a winner is declared
          */
 }
