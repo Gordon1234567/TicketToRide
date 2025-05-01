@@ -12,7 +12,11 @@ public class gameLoop {
     /**
      * This is the main method running the game
      * intakes the number of players then makes a deck
-     *
+     * runs through each players turn, first printing the board
+     * then asking them which option they would like to use
+     * with taking cards and placing trains ending their turn
+     * when the deck runs out a new one is reshuffled in.
+     * this loop continues until a player runs out of trains.
      */
     public void loop() {
         Scanner scan = new Scanner(System.in);
@@ -233,11 +237,6 @@ public class gameLoop {
         }
 
     }
-    /**
-     * This will ask the player if they want to pick up cards or place trains,
-     * They can also choose to check their points and how many trains they have left
-     * @return
-     */
 
     /**
      * This will be given the line that the player wants to play, it will try to play trains there
