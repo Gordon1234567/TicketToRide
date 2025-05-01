@@ -158,14 +158,32 @@ public class gameLoop {
 
                 } else if (choice == 3) {
                     System.out.println(player[playerNum].checkPoints() + " points");
-                    System.out.println(player[playerNum].checkTrains() + " trains remaining");
+                    System.out.println(player[playerNum].getTrains() + " trains remaining");
                     System.out.println(player[playerNum].toStringRout());
                     System.out.println("What else?");
 
                 } else if (choice == 4) {
-                    player[playerNum].pickupRoutCard(routDeck);
-                    System.out.println("Your new hand " + player[playerNum].toStringRout());
-                    break;
+                    if (player[playerNum].howManyRoutCards() == 3){
+                        System.out.println("You can only have 3 rout cards at a time");
+                        System.out.println("\nwould you like to:" +
+                                "\n1 - Pick up 2 random cards" +
+                                "\n2 - Place trains" +
+                                "\n3 - Check your points, trains, and routs " +
+                                "\n4 - Take a rout card" +
+                                "\n5 - Pick up 1 card form the card row");
+                    } else if (routDeck.getRemaining() == 0) {
+                        System.out.println("There are no more rout cards");
+                        System.out.println("\nwould you like to:" +
+                                "\n1 - Pick up 2 random cards" +
+                                "\n2 - Place trains" +
+                                "\n3 - Check your points, trains, and routs " +
+                                "\n4 - Take a rout card" +
+                                "\n5 - Pick up 1 card form the card row");
+                    } else {
+                        player[playerNum].pickupRoutCard(routDeck);
+                        System.out.println("Your new hand " + player[playerNum].toStringRout());
+                        break;
+                    }
                 }else if(choice == 5){
                     System.out.println("What color card do you want");
                     scan.nextLine();
@@ -230,13 +248,24 @@ public class gameLoop {
                 return false;
 
                 // Then checks if the player has enough cards of specified color in their hand
-            } else if (railroad.getColor().equals("&")) {
+            } else if (railroad.getColor().equals("&") && x.getTotalCards() >= railroad.getTrains()) {
                 Scanner scan = new Scanner(System.in);
                 System.out.println("choose what colors you will use for the & track you need to choose " + railroad.getTrains() + " cards");
                 for (int i = 0; i < railroad.getTrains(); i++){
-                    System.out.println("what card do you want to use: " + "[" + i+1 + "-"+railroad.getTrains() + "]");
-                    String color = scan.next();
-                    System.out.println(color);
+                    System.out.println("what card do you want to use: " + "[" + (i+1) + "-"+railroad.getTrains() + "]");
+                    boolean runfast = true;
+                    while (runfast) {
+                        runfast = false;
+                        String color = scan.next();
+                        if (!color.equals("red") && !color.equals("blue") && !color.equals("green")){
+                            System.out.println("that is not a color try again");
+                            runfast = true;
+                        } else if (x.getHand().get(color) == 0) {
+                            System.out.println("You don't have that color card");
+                            runfast = true;
+                        }
+                    }
+
                     board.playTrains(x, railroad);
                 }
                 x.addGroup(railroad.getLocations());

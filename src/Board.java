@@ -48,7 +48,7 @@ public class Board {
         // the user can input a variety of answers to
         // "Where would you like to place trains?" and still get it to apply.
         // for gray lines USE & as the symbol
-        A = new line("red",2,1,2);
+        A = new line("&",2,1,2);
         B = new line("blue",4,1,3);
         C = new line("green",3,2,4);
         D = new line("red",1,3,4);

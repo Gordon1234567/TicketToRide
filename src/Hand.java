@@ -43,6 +43,10 @@ public class Hand {
 
     }
 
+    public int getTotalCards(){
+        return hand.get("red") + hand.get("blue") + hand.get("green");
+    }
+
     public int getPlayerNumber() {
         return playerNumber;
     }
@@ -94,6 +98,9 @@ public class Hand {
     public void pickupRoutCard(routDeck theDeck){
         rout one = (rout) theDeck.draw();
         routs.add(one);
+    }
+    public int howManyRoutCards(){
+        return routs.size();
     }
 
     /**
@@ -167,12 +174,6 @@ public class Hand {
         return points;
     }
 
-    /**
-     * Check how many trains they have
-     */
-    public int checkTrains(){
-        return trains;
-    }
 
     /**
      * this gives the players hand
@@ -203,15 +204,18 @@ public class Hand {
     }
 
     public void checkRouts(){
-        ArrayList<Integer> deleate = new ArrayList<>();
+        ArrayList<rout> deleate = new ArrayList<>();
         for (int i = 0; i < routs.size(); i++){
             for (int j = 0; j < groups.size(); j++){
                 if (groups.get(j).contains(routs.get(i).getPoint1()) && groups.get(j).contains(routs.get(i).getPoint2())){
                     System.out.println("You have completed your rout form " + routs.get(i).getPoint1() + " to " + routs.get(i).getPoint2() + " gaining " + routs.get(i).getPoints() + "  points");
                     points+=routs.get(i).getPoints();
-                    //deleate.add(routs.get(i));
+                    deleate.add(routs.get(i));
                 }
             }
+        }
+        for (int i = 0; i < deleate.size(); i++){
+            routs.remove(deleate.get(i));
         }
     }
 
