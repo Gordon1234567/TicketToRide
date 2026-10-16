@@ -4,6 +4,12 @@ A Java console game inspired by Ticket to Ride. Build rail connections across a 
 
 Created by **Gordon Schartner** and **Samuel Rees**.
 
+## Play in your browser
+
+[Play Ticket to Ride: Ohio Valley](https://gordon1234567.github.io/TicketToRide/)
+
+No download or Java installation is needed. Enter 1-3 players, type answers to the terminal prompts, and press Enter. Players share one device.
+
 ## Features
 
 - Local, turn-based play for **1–3 players** sharing a console.
