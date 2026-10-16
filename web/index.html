@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Play Ticket to Ride: Ohio Valley in your browser. Type answers to the original terminal prompts.">
+  <title>Ticket to Ride — Terminal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main aria-label="Ticket to Ride terminal">
+    <div id="output-scroll" tabindex="0" aria-label="Game output. Scroll to read earlier turns.">
+      <pre id="output" role="log" aria-live="polite" aria-relevant="additions text"></pre>
+    </div>
+    <form id="input-form" autocomplete="off">
+      <label for="answer">&gt;</label>
+      <input id="answer" name="answer" aria-label="Answer the game prompt" spellcheck="false" autocapitalize="off" autocomplete="off" autofocus maxlength="100">
+      <button type="submit">Enter</button>
+    </form>
+    <p class="hint" id="save-hint">Type your answer and press Enter. <code>/restart</code> starts a new game. Your progress saves in this browser.</p>
+    <noscript>This game needs JavaScript enabled to run.</noscript>
+  </main>
+  <script src="game.js"></script>
+  <script src="terminal.js"></script>
+</body>
+</html>
