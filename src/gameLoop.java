@@ -75,8 +75,12 @@ public class gameLoop {
             System.out.println("___________________________________________________________________");
             board.printBoard();
 
-            if(player[playerNum].getTrains() == 0){
-                System.out.println("The game has ended because " + (playerNum + 1) + " has no more trains");
+            if(player[playerNum].getTrains() == 0 || !canAnyoneBuild(board, player)){
+                if (player[playerNum].getTrains() == 0) {
+                    System.out.println("The game has ended because " + (playerNum + 1) + " has no more trains");
+                } else {
+                    System.out.println("The game has ended because no player has enough trains for an unclaimed line");
+                }
                 int winningPlayer = 0;
                 int highestNumber = 0;
                 for (int i = 0; i < player.length; i++){
@@ -157,15 +161,19 @@ public class gameLoop {
                     }catch(NumberFormatException e){
                         location2 = inputReceiver(input2);
                     }
-                    line a = new line();
-                    for (int i = 0; i < board.getLength(); i++){
-                        if (board.getLine(i).getLocations().contains(location2) && board.getLine(i).getLocations().contains(location1)){
-                            a = board.getLine(i);
-
-                        }
+                    line a = findLine(board, location1, location2);
+                    if (a == null) {
+                        System.out.println("Choose two different cities joined directly on the board.");
+                        System.out.println("\nwould you like to:" +
+                                "\n1 - Pick up 2 random cards" +
+                                "\n2 - Place trains" +
+                                "\n3 - Check your points, trains, and routs " +
+                                "\n4 - Take a rout card" +
+                                "\n5 - Pick up 1 card from the card row");
+                        continue;
                     }
 
-                    boolean gotPlayed = playTrain(a , player[playerNum], board);
+                    boolean gotPlayed = playTrain(a , player[playerNum], board, scan);
                     if (gotPlayed) {break;}
 
                 } else if (choice == 3) {
@@ -243,6 +251,11 @@ public class gameLoop {
      * @param railroad is the line the player wants to play on
      */
     public boolean playTrain(line railroad, Hand x, Board board) {
+        return playTrain(railroad, x, board, new Scanner(System.in));
+    }
+
+    // Reuse the turn's scanner so it cannot buffer input away from color prompts.
+    private boolean playTrain(line railroad, Hand x, Board board, Scanner scan) {
         /**
          * This is a boolean so that if the player doesn't meet
          * the requirements for the line chosen, the player's turn
@@ -250,7 +263,10 @@ public class gameLoop {
          */
 
             // first checks if the line is full
-            if (railroad.getFull()) {
+            if (railroad == null || railroad.getColor() == null) {
+                System.out.println("Choose two different cities joined directly on the board.");
+                return false;
+            } else if (railroad.getFull()) {
                 System.out.println("Line already built");
                 return false;
 
@@ -261,7 +277,6 @@ public class gameLoop {
 
                 // Then checks if the player has enough cards of specified color in their hand
             } else if (railroad.getColor().equals("&") && x.getTotalCards() >= railroad.getTrains()) {
-                Scanner scan = new Scanner(System.in);
                 System.out.println("choose what colors you will use for the & track you need to choose " + railroad.getTrains() + " cards");
                 String color="";
                 for (int i = 0; i < railroad.getTrains(); i++){
@@ -296,6 +311,34 @@ public class gameLoop {
                 System.out.println("You don't have the required cards");
                 return false;
             }
+    }
+
+    /** Finds a direct track between two distinct, valid cities. */
+    public line findLine(Board board, int start, int end) {
+        if (start < 1 || start > 10 || end < 1 || end > 10 || start == end) {
+            return null;
+        }
+        for (int i = 0; i < board.getLength(); i++) {
+            line track = board.getLine(i);
+            if (track.getLocations().contains(start) && track.getLocations().contains(end)) {
+                return track;
+            }
+        }
+        return null;
+    }
+
+    /** Checks train capacity, since players can continue drawing missing cards. */
+    public boolean canAnyoneBuild(Board board, Hand[] players) {
+        for (int i = 0; i < board.getLength(); i++) {
+            line track = board.getLine(i);
+            if (!track.getFull()) {
+                for (Hand player : players) {
+                    // Cards can still be drawn; remaining trains determine feasibility.
+                    if (player.getTrains() >= track.getTrains()) return true;
+                }
+            }
+        }
+        return false;
     }
 
     /**

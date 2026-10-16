@@ -109,4 +109,23 @@ The existing source uses `rout` for destination routes. `Turn.java` contains com
 
 This version uses custom rules rather than the complete board game's rules. It runs entirely in the console, with all players sharing the same display.
 
-In the current implementation, flexible (`&`) connections consume cards and award points but do not reduce the player's remaining train count. The train-card deck is replaced with a newly shuffled deck when fewer than two cards remain. The end condition requires exactly zero remaining trains; there is no separate stalemate or tie-handling system.
+Flexible (`&`) connections consume one card and one train per space, with points awarded once per connection. The train-card deck is replaced with a newly shuffled deck when fewer than two cards remain. Games also end when no player has enough trains to build any unclaimed connection.
+
+## Browser version
+
+Open web/index.html in a browser to play the browser adaptation. It recreates the original console prompts, numbered menu, and ASCII board for 1-3 players sharing a device. Type answers and press Enter; type /restart to start over. Progress saves automatically in this browser. The browser version uses a JavaScript adaptation of the game; the original Java source remains in src/. No Java installation or server is required. Flexible tracks consume trains, and games also end when no player has enough trains for any remaining connection.
+
+Browser saves synchronize between updated tabs. An older tab loads the latest saved game before accepting more input. If safe saving is unavailable, the terminal displays a warning and you can keep playing in that tab.
+
+## Regression checks
+
+With JDK 22 and Node.js on your PATH, run these commands from the project folder:
+
+```sh
+javac -d out src/*.java tests/RegressionTests.java
+java -cp out RegressionTests
+node tests/terminal-game.test.cjs
+node tests/browser-save.test.cjs
+```
+
+The checks cover track endpoints, city validation, flexible-track costs, stalled games, console input, destination scoring, browser gameplay, and save synchronization.

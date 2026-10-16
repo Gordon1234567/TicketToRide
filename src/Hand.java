@@ -79,6 +79,8 @@ public class Hand {
      * @param group is the end points of the line that the player has placed on the board
      */
     public void addGroup(HashSet<Integer> group) {
+        // Player networks must not modify the board's original track endpoints.
+        group = new HashSet<>(group);
         //if there are no hash sets we can just add the new one without checking anything
         if (groups.isEmpty()){
             groups.add(group);
@@ -193,6 +195,8 @@ public class Hand {
             trains = trains - x.getTrains();
         }else {
             hand.put(x.getColorForGray(), hand.get(x.getColorForGray()) - 1);
+            // Flexible tracks are paid one card (and one train) at a time.
+            trains--;
         }
     }
 
