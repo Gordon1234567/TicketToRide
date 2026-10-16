@@ -6,9 +6,9 @@ Created by **Gordon Schartner** and **Samuel Rees**.
 
 ## Play in your browser
 
-[Play Ticket to Ride: Ohio Valley](https://gordon1234567.github.io/TicketToRide/)
+Download this repository, extract it, and open `web/index.html` in your browser. No Java installation is needed. Enter 1-3 players, type answers to the terminal prompts, and press Enter. Players share one device.
 
-No download or Java installation is needed. Enter 1-3 players, type answers to the terminal prompts, and press Enter. Players share one device.
+GitHub Pages is not enabled for this private fork. A public click-to-play link is not available from this repository yet.
 
 ## Features
 
